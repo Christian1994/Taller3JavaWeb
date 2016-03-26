@@ -87,7 +87,7 @@ public class CarreraLogica implements CarreraLogicaLocal {
     @Override
     public Carrera consultarxCodigo(Integer codigo) throws Exception {
         if(codigo==null || codigo==0){
-        throw new Exception("El código es Obligatorio.");
+            throw new Exception("El código es Obligatorio.");
         }else{
             return carreraDAO.find(codigo);
         }
