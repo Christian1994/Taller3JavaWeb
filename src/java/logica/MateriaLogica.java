@@ -36,6 +36,9 @@ public class MateriaLogica implements MateriaLogicaLocal {
             if(materia.getCreditosmateria() == 0 || materia.getCreditosmateria() == null){
                 throw new Exception("Toda materia tiene al menos 1 crédito.");
             }
+            if(materia.getNumerocarrera() == null || materia.getNumerocarrera().equals(null)){
+                throw new Exception("Toda materia debe pertenecer a una carrera.");
+            }
         }
         
         Materia objMateria = materiaDAO.find(materia.getNumeromateria());
@@ -61,6 +64,9 @@ public class MateriaLogica implements MateriaLogicaLocal {
             if(materia.getCreditosmateria() == 0 || materia.getCreditosmateria() == null){
                 throw new Exception("Toda materia tiene al menos 1 crédito.");
             }
+            if(materia.getNumerocarrera() == null || materia.getNumerocarrera().equals(null)){
+                throw new Exception("Toda materia debe pertenecer a una carrera.");
+            }
         }
         
         Materia objMateria = materiaDAO.find(materia.getNombremateria());
@@ -69,6 +75,7 @@ public class MateriaLogica implements MateriaLogicaLocal {
         }else{
             objMateria.setNombremateria(materia.getNombremateria());
             objMateria.setCreditosmateria(materia.getCreditosmateria());
+            objMateria.setNumerocarrera(materia.getNumerocarrera());
             materiaDAO.edit(objMateria);
         }        
     }
