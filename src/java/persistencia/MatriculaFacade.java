@@ -17,7 +17,7 @@ import modelo.Matricula;
 @Stateless
 public class MatriculaFacade extends AbstractFacade<Matricula> implements MatriculaFacadeLocal {
 
-    @PersistenceContext(unitName = "UnivalleDemoPU")
+    @PersistenceContext(unitName = "Taller3JavaWebPU")
     private EntityManager em;
 
     @Override

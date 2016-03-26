@@ -17,7 +17,7 @@ import modelo.Estudiante;
 @Stateless
 public class EstudianteFacade extends AbstractFacade<Estudiante> implements EstudianteFacadeLocal {
 
-    @PersistenceContext(unitName = "UnivalleDemoPU")
+    @PersistenceContext(unitName = "Taller3JavaWebPU")
     private EntityManager em;
 
     @Override

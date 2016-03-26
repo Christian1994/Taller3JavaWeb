@@ -17,7 +17,7 @@ import modelo.Carrera;
 @Stateless
 public class CarreraFacade extends AbstractFacade<Carrera> implements CarreraFacadeLocal {
 
-    @PersistenceContext(unitName = "UnivalleDemoPU")
+    @PersistenceContext(unitName = "Taller3JavaWebPU")
     private EntityManager em;
 
     @Override
