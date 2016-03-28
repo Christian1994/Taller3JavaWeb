@@ -157,7 +157,7 @@ public class DocenteVista {
         this.selectedDocente = selectedDocente;
     }    
     
-    // Mostrar por interfaz la docente seleccionada
+    // Mostrar por interfaz el docente seleccionado
     public void onRowSelect(SelectEvent event) {
         this.selectedDocente = (Docente) event.getObject();
         
@@ -169,7 +169,7 @@ public class DocenteVista {
         this.txtProfesion.setValue(selectedDocente.getProfesiondocente());
         this.txtClave.setValue(selectedDocente.getClavedocente());
         
-        // Se deshabilita el botón registrar para permitir que la docente se puede modificar o eliminar       
+        // Se deshabilita el botón registrar para permitir que el docente se puede modificar o eliminar       
         this.btnRegistrar.setDisabled(true);
         this.btnModificar.setDisabled(false);
         this.btnEliminar.setDisabled(false);

@@ -42,9 +42,9 @@ public class DocenteLogica implements DocenteLogicaLocal {
             if(!docente.getCorreodocente().contains("@") || !docente.getCorreodocente().endsWith(".com") || !docente.getCorreodocente().endsWith(".es")){
                 throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
             }
-            
-            // Dejaremos el teléfono como campo opcional, pues no todos los profesores tienen teléfono
-            
+            if(docente.getTelefonodocente().equals("") || docente.getTelefonodocente() == null){
+                throw new Exception("Campo Teléfono Obligatorio.");
+            }
             if(docente.getProfesiondocente().equals("") || docente.getProfesiondocente() == null){
                 throw new Exception("Campo Profesión Docente Obligatorio.");
             }
