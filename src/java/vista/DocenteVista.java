@@ -33,7 +33,7 @@ public class DocenteVista {
     private InputText txtCorreo;
     private InputText txtTelefono;
     private InputText txtProfesion;
-    private InputText txtClave;
+    private String txtClave;
     
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
@@ -94,11 +94,11 @@ public class DocenteVista {
         this.txtProfesion = txtProfesion;
     }
 
-    public InputText getTxtClave() {
+    public String getTxtClave() {
         return txtClave;
     }
 
-    public void setTxtClave(InputText txtClave) {
+    public void setTxtClave(String txtClave) {
         this.txtClave = txtClave;
     }
 
@@ -167,7 +167,7 @@ public class DocenteVista {
         this.txtCorreo.setValue(selectedDocente.getCorreodocente());
         this.txtTelefono.setValue(selectedDocente.getTelefonodocente());
         this.txtProfesion.setValue(selectedDocente.getProfesiondocente());
-        // this.txtClave.setValue(selectedDocente.getClavedocente());
+        this.txtClave = selectedDocente.getClavedocente();
         
         // Se deshabilita el botón registrar para permitir que el docente se puede modificar o eliminar       
         this.btnRegistrar.setDisabled(true);
@@ -184,7 +184,7 @@ public class DocenteVista {
         this.txtCorreo.setValue("");
         this.txtTelefono.setValue("");
         this.txtProfesion.setValue("");
-        this.txtClave.setValue("");
+        this.txtClave = "";
         
         this.txtDocumento.setDisabled(false);
         this.btnRegistrar.setDisabled(false);
@@ -202,7 +202,7 @@ public class DocenteVista {
             objDocente.setCorreodocente(this.txtCorreo.getValue().toString());
             objDocente.setTelefonodocente(this.txtTelefono.getValue().toString());
             objDocente.setProfesiondocente(this.txtProfesion.getValue().toString());
-            objDocente.setClavedocente(this.txtClave.getValue().toString());
+            objDocente.setClavedocente(this.txtClave);
             
             docenteLogica.registrarDocente(objDocente);
             listaDocentes = null;
@@ -224,7 +224,7 @@ public class DocenteVista {
             objDocente.setCorreodocente(this.txtCorreo.getValue().toString());
             objDocente.setTelefonodocente(this.txtTelefono.getValue().toString());
             objDocente.setProfesiondocente(this.txtProfesion.getValue().toString());
-            objDocente.setClavedocente(this.txtClave.getValue().toString());
+            objDocente.setClavedocente(this.txtClave);
             
             docenteLogica.modificarDocente(objDocente);
             listaDocentes = null;
@@ -246,7 +246,7 @@ public class DocenteVista {
             objDocente.setCorreodocente(this.txtCorreo.getValue().toString());
             objDocente.setTelefonodocente(this.txtTelefono.getValue().toString());
             objDocente.setProfesiondocente(this.txtProfesion.getValue().toString());
-            objDocente.setClavedocente(this.txtClave.getValue().toString());
+            objDocente.setClavedocente(this.txtClave);
             
             docenteLogica.eliminarDocente(objDocente);
             listaDocentes = null;
