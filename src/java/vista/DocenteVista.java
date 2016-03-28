@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import logica.DocenteLogicaLocal;
 import modelo.Docente;
 import org.primefaces.component.commandbutton.CommandButton;
@@ -42,7 +44,7 @@ public class DocenteVista {
     private Docente selectedDocente;
     
     @EJB
-    DocenteLogicaLocal docenteLogica;
+    private DocenteLogicaLocal docenteLogica;
     
     public InputText getTxtDocumento() {
         return txtDocumento;
@@ -192,17 +194,68 @@ public class DocenteVista {
     
     // Método registrar
     public void action_registrar(){
-
+        try {
+            Docente objDocente = new Docente();
+            objDocente.setDocumentodocente(Long.parseLong(this.txtDocumento.getValue().toString()));
+            objDocente.setNombredocente(this.txtNombre.getValue().toString());
+            objDocente.setApellidodocente(this.txtApellido.getValue().toString());
+            objDocente.setCorreodocente(this.txtCorreo.getValue().toString());
+            objDocente.setTelefonodocente(this.txtTelefono.getValue().toString());
+            objDocente.setProfesiondocente(this.txtProfesion.getValue().toString());
+            objDocente.setClavedocente(this.txtClave.getValue().toString());
+            
+            docenteLogica.registrarDocente(objDocente);
+            listaDocentes = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Información de creación de docente", "El docente fue registrado con éxito."));
+            
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
     }
     
     // Método modificar
     public void action_modificar(){
-
+        try{
+            Docente objDocente = new Docente();
+            objDocente.setDocumentodocente(Long.parseLong(this.txtDocumento.getValue().toString()));
+            objDocente.setNombredocente(this.txtNombre.getValue().toString());
+            objDocente.setApellidodocente(this.txtApellido.getValue().toString());
+            objDocente.setCorreodocente(this.txtCorreo.getValue().toString());
+            objDocente.setTelefonodocente(this.txtTelefono.getValue().toString());
+            objDocente.setProfesiondocente(this.txtProfesion.getValue().toString());
+            objDocente.setClavedocente(this.txtClave.getValue().toString());
+            
+            docenteLogica.modificarDocente(objDocente);
+            listaDocentes = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Información de modificación de docente", "El docente fue modificado con éxito."));
+            
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
     }
     
     // Método eliminar
     public void action_eliminar(){
-
+        try{
+            Docente objDocente = new Docente();
+            objDocente.setDocumentodocente(Long.parseLong(this.txtDocumento.getValue().toString()));
+            objDocente.setNombredocente(this.txtNombre.getValue().toString());
+            objDocente.setApellidodocente(this.txtApellido.getValue().toString());
+            objDocente.setCorreodocente(this.txtCorreo.getValue().toString());
+            objDocente.setTelefonodocente(this.txtTelefono.getValue().toString());
+            objDocente.setProfesiondocente(this.txtProfesion.getValue().toString());
+            objDocente.setClavedocente(this.txtClave.getValue().toString());
+            
+            docenteLogica.eliminarDocente(objDocente);
+            listaDocentes = null;
+            limpiar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Información de eliminación de docente", "El docente fue eliminado con éxito."));
+            
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error.", ex.getMessage()));
+        }
     }
     
     /**

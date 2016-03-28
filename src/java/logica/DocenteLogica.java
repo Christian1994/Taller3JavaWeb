@@ -53,7 +53,7 @@ public class DocenteLogica implements DocenteLogicaLocal {
             }
         }
         
-        Docente objDocente = docenteDAO.find(docente);
+        Docente objDocente = docenteDAO.find(docente.getDocumentodocente());
         if(objDocente != null){
             throw new Exception("Docente ya existe.");
         }
