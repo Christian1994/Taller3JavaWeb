@@ -39,7 +39,7 @@ public class DocenteLogica implements DocenteLogicaLocal {
             if(docente.getCorreodocente().equals("") || docente.getCorreodocente() == null){
                 throw new Exception("Campo E-mail Docente Obligatorio.");
             }
-            if(!docente.getCorreodocente().contains("@") || !docente.getCorreodocente().endsWith(".com") || !docente.getCorreodocente().endsWith(".es")){
+            if(!docente.getCorreodocente().contains("@") && (!docente.getCorreodocente().endsWith(".com") || !docente.getCorreodocente().endsWith(".es"))){
                 throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
             }
             if(docente.getTelefonodocente().equals("") || docente.getTelefonodocente() == null){
@@ -80,7 +80,7 @@ public class DocenteLogica implements DocenteLogicaLocal {
             if(docente.getCorreodocente().equals("") || docente.getCorreodocente() == null){
                 throw new Exception("Campo E-mail Docente Obligatorio.");
             }
-            if(!docente.getCorreodocente().contains("@") || !docente.getCorreodocente().endsWith(".com") || !docente.getCorreodocente().endsWith(".es")){
+            if(!docente.getCorreodocente().contains("@") && (!docente.getCorreodocente().endsWith(".com") || !docente.getCorreodocente().endsWith(".es"))){
                 throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
             }
             
