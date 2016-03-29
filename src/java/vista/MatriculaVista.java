@@ -17,6 +17,7 @@ import logica.MatriculaLogicaLocal;
 import modelo.Estudiante;
 import modelo.Materia;
 import modelo.Matricula;
+import modelo.MatriculaPK;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.event.SelectEvent;
@@ -169,8 +170,10 @@ public class MatriculaVista {
             objEstudiante.setDocumentoestudiante(Long.parseLong(this.txtDocumentoEstudiante.getValue().toString()));
             Materia objMateria = new Materia();
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumeroMateria.getValue().toString()));
+            MatriculaPK objMatriculaPK = new MatriculaPK(objEstudiante.getDocumentoestudiante(), objMateria.getNumeromateria());
             
             Matricula objMatricula = new Matricula();
+            objMatricula.setMatriculaPK(objMatriculaPK);
             objMatricula.setEstudiante(objEstudiante);
             objMatricula.setMateria(objMateria);
             objMatricula.setNota(Double.parseDouble(this.txtNota.getValue().toString()));
@@ -192,8 +195,10 @@ public class MatriculaVista {
             objEstudiante.setDocumentoestudiante(Long.parseLong(this.txtDocumentoEstudiante.getValue().toString()));
             Materia objMateria = new Materia();
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumeroMateria.getValue().toString()));
+            MatriculaPK objMatriculaPK = new MatriculaPK(objEstudiante.getDocumentoestudiante(), objMateria.getNumeromateria());
             
             Matricula objMatricula = new Matricula();
+            objMatricula.setMatriculaPK(objMatriculaPK);
             objMatricula.setEstudiante(objEstudiante);
             objMatricula.setMateria(objMateria);
             objMatricula.setNota(Double.parseDouble(this.txtNota.getValue().toString()));
@@ -215,8 +220,10 @@ public class MatriculaVista {
             objEstudiante.setDocumentoestudiante(Long.parseLong(this.txtDocumentoEstudiante.getValue().toString()));
             Materia objMateria = new Materia();
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumeroMateria.getValue().toString()));
+            MatriculaPK objMatriculaPK = new MatriculaPK(objEstudiante.getDocumentoestudiante(), objMateria.getNumeromateria());
             
             Matricula objMatricula = new Matricula();
+            objMatricula.setMatriculaPK(objMatriculaPK);
             objMatricula.setEstudiante(objEstudiante);
             objMatricula.setMateria(objMateria);
             objMatricula.setNota(Double.parseDouble(this.txtNota.getValue().toString()));
