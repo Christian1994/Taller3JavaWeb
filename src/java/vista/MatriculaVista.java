@@ -148,6 +148,7 @@ public class MatriculaVista {
         this.btnModificar.setDisabled(false);
         this.btnEliminar.setDisabled(false);
         this.txtDocumentoEstudiante.setDisabled(true);
+        this.txtNumeroMateria.setDisabled(true);
     }
     
     //Limpia los campos y reinicia los valores
@@ -158,6 +159,7 @@ public class MatriculaVista {
         this.txtEstado.setValue("");
         
         this.txtDocumentoEstudiante.setDisabled(false);
+        this.txtNumeroMateria.setDisabled(false);
         this.btnRegistrar.setDisabled(false);
         this.btnModificar.setDisabled(true);
         this.btnEliminar.setDisabled(true);

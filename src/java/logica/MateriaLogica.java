@@ -36,7 +36,7 @@ public class MateriaLogica implements MateriaLogicaLocal {
             if(materia.getCreditosmateria() == 0 || materia.getCreditosmateria() == null){
                 throw new Exception("Toda materia tiene al menos 1 crédito.");
             }
-            if(materia.getNumerocarrera() == null){
+            if(materia.getNumerocarrera().getNombrecarrera().equals("") || materia.getNumerocarrera().getNombrecarrera() == null){
                 throw new Exception("Toda materia debe pertenecer a una carrera.");
             }
         }
@@ -64,7 +64,7 @@ public class MateriaLogica implements MateriaLogicaLocal {
             if(materia.getCreditosmateria() == 0 || materia.getCreditosmateria() == null){
                 throw new Exception("Toda materia tiene al menos 1 crédito.");
             }
-            if(materia.getNumerocarrera() == null){
+            if(materia.getNumerocarrera().getNombrecarrera().equals("") || materia.getNumerocarrera().getNombrecarrera() == null){
                 throw new Exception("Toda materia debe pertenecer a una carrera.");
             }
         }
