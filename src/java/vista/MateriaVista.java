@@ -163,6 +163,7 @@ public class MateriaVista {
         this.txtNumero.setValue(selectedMateria.getNumeromateria());
         this.txtNombre.setValue(selectedMateria.getNombremateria());
         this.txtCreditos.setValue(selectedMateria.getCreditosmateria());
+        // this.cmbCarreras.setValue(itemsCarreras.get(selectedMateria.getNumeromateria()).getValue());
         // Pendiente cómo seleccionar la carrera
         
         // Se deshabilita el botón registrar para permitir que la carrera se puede modificar o eliminar       
@@ -187,9 +188,13 @@ public class MateriaVista {
     public void action_registrar(){
         try {
             Materia objMateria = new Materia();
+            Carrera objCarrera = new Carrera();
+            objCarrera.setNombrecarrera(this.cmbCarreras.getValue().toString());
+            
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
             objMateria.setCreditosmateria(Integer.parseInt(this.txtCreditos.getValue().toString()));
+            objMateria.setNumerocarrera(objCarrera);
             
             materiaLogica.registrarMateria(objMateria);
             listaMaterias = null;
