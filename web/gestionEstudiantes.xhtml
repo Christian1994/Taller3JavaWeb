@@ -42,7 +42,66 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                        
+                        <!--CRUD estudiante-->
+                        <p:panelGrid columns="4">
+                            <h:outputText value="Documento"/>
+                            <p:inputText id="txtNumero" binding="#{estudianteVista.txtDocumento}"/>
+
+                            <h:outputText value="Nombre"/>
+                            <p:inputText id="txtNombre" binding="#{estudianteVista.txtNombre}"/>
+                   
+                            <h:outputText value="Apellido"/>
+                            <p:inputText id="txtApellido" binding="#{estudianteVista.txtApellido}"/>
+
+                            <h:outputText value="E-mail"/>
+                            <p:inputText id="txtCorreo" binding="#{estudianteVista.txtCorreo}"/>
+                            
+                            <h:outputText value="Semestre"/>
+                            <p:inputText id="txtTelefono" binding="#{estudianteVista.txtSemestre}"/>
+
+                            <h:outputText value="Clave"/>
+                            <p:password id="txtClave" value="#{estudianteVista.txtClave}" feedback="true"/>
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{estudianteVista.btnRegistrar}" action="#{estudianteVista.action_registrar()}" update=":form"/> 
+                            <p:commandButton value="Modificar" binding="#{estudianteVista.btnModificar}" action="#{estudianteVista.action_modificar()}" update=":form"/>
+                            <p:commandButton value="Eliminar" binding="#{estudianteVista.btnEliminar}" action="#{estudianteVista.action_eliminar()}" update=":form"/>
+                            <p:commandButton value="Limpiar" binding="#{estudianteVista.btnLimpiar}" action="#{estudianteVista.limpiar()}" update=":form"/>                            
+                        </p:panelGrid>
+
+                        <p:dataTable id="eventsDT" var="estudiante" value="#{estudianteVista.listaEstudiantes}" selectionMode="single" selection="#{estudianteVista.selectedEstudiante}" rowKey="#{estudiante.documentoestudiante}">
+                            <f:facet name="header">
+                                Estudiantes
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{estudianteVista.onRowSelect}" update=":form" />
+                            <p:column headerText="Documento">
+                                <h:outputText value="#{estudiante.documentoestudiante}" />
+                            </p:column>
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{estudiante.nombreestudiante}" />
+                            </p:column>
+                            <p:column headerText="Apellido">
+                                <h:outputText value="#{estudiante.apellidoestudiante}" />
+                            </p:column>
+                            <p:column headerText="E-mail">
+                                <h:outputText value="#{estudiante.correoestudiante}" />
+                            </p:column>
+                            <p:column headerText="Semestre">
+                                <h:outputText value="#{estudiante.semestreestudiante}" />
+                            </p:column>
+                            <!--
+                            <p:column headerText="Clave">
+                                <h:outputText value="#{estudiante.claveestudiante}" />
+                            </p:column>
+                            -->
+                        </p:dataTable>
+                        
+                    </h:form>                    
                 </p:layoutUnit>
 
             </p:layout>
