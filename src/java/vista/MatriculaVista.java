@@ -16,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import logica.EstudianteLogicaLocal;
+import logica.MateriaLogicaLocal;
 import logica.MatriculaLogicaLocal;
 import modelo.Estudiante;
 import modelo.Materia;
@@ -37,6 +38,8 @@ public class MatriculaVista {
     private InputText txtDocumentoEstudiante;
     private SelectOneMenu cmbEstudiantes;
     private ArrayList<SelectItem> itemsEstudiantes;
+    private SelectOneMenu cmbMaterias;
+    private ArrayList<SelectItem> itemsMaterias;
     private InputText txtNumeroMateria;
     private InputText txtNota;
     private InputText txtEstado;
@@ -53,6 +56,8 @@ public class MatriculaVista {
     private MatriculaLogicaLocal matriculaLogica;
     @EJB
     private EstudianteLogicaLocal estudianteLogica;
+    @EJB
+    private MateriaLogicaLocal materiaLogica;
 
     public InputText getTxtDocumentoEstudiante() {
         return txtDocumentoEstudiante;
@@ -76,7 +81,7 @@ public class MatriculaVista {
             itemsEstudiantes = new ArrayList<>();
             
             for(Estudiante e: listaE){
-                itemsEstudiantes.add(new SelectItem(e.getDocumentoestudiante(), e.getNombreestudiante()));
+                itemsEstudiantes.add(new SelectItem(e.getDocumentoestudiante(), e.getNombreestudiante() + " " + e.getApellidoestudiante()));
             }
         } catch (Exception ex) {
             Logger.getLogger(MatriculaVista.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,6 +102,33 @@ public class MatriculaVista {
         this.txtNumeroMateria = txtNumeroMateria;
     }
 
+    public SelectOneMenu getCmbMaterias() {
+        return cmbMaterias;
+    }
+
+    public void setCmbMaterias(SelectOneMenu cmbMaterias) {
+        this.cmbMaterias = cmbMaterias;
+    }
+
+    public ArrayList<SelectItem> getItemsMaterias() {
+        try {
+            List<Materia> listaM = materiaLogica.consultarTodas();
+            itemsMaterias = new ArrayList<>();
+            
+            for(Materia m: listaM){
+                itemsMaterias.add(new SelectItem(m.getNumeromateria(), m.getNombremateria()));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MatriculaVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return itemsMaterias;
+    }
+
+    public void setItemsMaterias(ArrayList<SelectItem> itemsMaterias) {
+        this.itemsMaterias = itemsMaterias;
+    }
+    
     public InputText getTxtNota() {
         return txtNota;
     }
