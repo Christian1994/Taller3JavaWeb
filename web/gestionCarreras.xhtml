@@ -46,12 +46,6 @@
                         <p:growl id="msgs" showDetail="true" />
                         <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                         
-                        <!--Lista las carreras-->
-                        <p:selectOneMenu id="cmbCarreras" binding="#{carreraVista.cmbCarreras}">
-                            <f:selectItem itemValue="0" itemLabel="Seleccione"/>
-                            <f:selectItems value="#{carreraVista.itemsCarreras}"/>
-                        </p:selectOneMenu>
-                        
                         <!--CRUD carrera-->
                         <p:panelGrid columns="4">
                             <h:outputText value="Número"/>

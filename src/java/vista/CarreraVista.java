@@ -5,7 +5,6 @@
  */
 package vista;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,12 +13,10 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import logica.CarreraLogicaLocal;
 import modelo.Carrera;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -32,8 +29,6 @@ public class CarreraVista {
 
     private InputText txtNumero;
     private InputText txtNombre;
-    private SelectOneMenu cmbCarreras;
-    private ArrayList<SelectItem> itemsCarreras;
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
     private CommandButton btnEliminar;
@@ -44,33 +39,6 @@ public class CarreraVista {
     @EJB
     private CarreraLogicaLocal carreraLogica;
 
-    public SelectOneMenu getCmbCarreras() {
-        return cmbCarreras;
-    }
-
-    public void setCmbCarreras(SelectOneMenu cmbCarreras) {
-        this.cmbCarreras = cmbCarreras;
-    }
-
-    public ArrayList<SelectItem> getItemsCarreras() {
-        try {
-            List<Carrera> listaC = carreraLogica.consultarTodas();
-            itemsCarreras = new ArrayList<>();
-            
-            for(Carrera c: listaC){
-                itemsCarreras.add(new SelectItem(c.getNumerocarrera(), c.getNombrecarrera()));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(CarreraVista.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return itemsCarreras;
-    }
-
-    public void setItemsCarreras(ArrayList<SelectItem> itemsCarreras) {
-        this.itemsCarreras = itemsCarreras;
-    }
-    
     public InputText getTxtNumero() {
         return txtNumero;
     }

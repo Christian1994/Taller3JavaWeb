@@ -5,6 +5,7 @@
  */
 package vista;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,8 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
+import logica.EstudianteLogicaLocal;
 import logica.MatriculaLogicaLocal;
 import modelo.Estudiante;
 import modelo.Materia;
@@ -20,6 +23,7 @@ import modelo.Matricula;
 import modelo.MatriculaPK;
 import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -31,6 +35,8 @@ import org.primefaces.event.SelectEvent;
 public class MatriculaVista {
 
     private InputText txtDocumentoEstudiante;
+    private SelectOneMenu cmbEstudiantes;
+    private ArrayList<SelectItem> itemsEstudiantes;
     private InputText txtNumeroMateria;
     private InputText txtNota;
     private InputText txtEstado;
@@ -45,6 +51,8 @@ public class MatriculaVista {
     
     @EJB
     private MatriculaLogicaLocal matriculaLogica;
+    @EJB
+    private EstudianteLogicaLocal estudianteLogica;
 
     public InputText getTxtDocumentoEstudiante() {
         return txtDocumentoEstudiante;
@@ -52,6 +60,33 @@ public class MatriculaVista {
 
     public void setTxtDocumentoEstudiante(InputText txtDocumentoEstudiante) {
         this.txtDocumentoEstudiante = txtDocumentoEstudiante;
+    }
+
+    public SelectOneMenu getCmbEstudiantes() {
+        return cmbEstudiantes;
+    }
+
+    public void setCmbEstudiantes(SelectOneMenu cmbEstudiantes) {
+        this.cmbEstudiantes = cmbEstudiantes;
+    }
+
+    public ArrayList<SelectItem> getItemsEstudiantes() {
+        try {
+            List<Estudiante> listaE = estudianteLogica.consultarTodos();
+            itemsEstudiantes = new ArrayList<>();
+            
+            for(Estudiante e: listaE){
+                itemsEstudiantes.add(new SelectItem(e.getDocumentoestudiante(), e.getNombreestudiante()));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MatriculaVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return itemsEstudiantes;
+    }
+
+    public void setItemsEstudiantes(ArrayList<SelectItem> itemsEstudiantes) {
+        this.itemsEstudiantes = itemsEstudiantes;
     }
 
     public InputText getTxtNumeroMateria() {

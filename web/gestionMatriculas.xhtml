@@ -46,6 +46,12 @@
                         <p:growl id="msgs" showDetail="true" />
                         <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                         
+                        <!--Lista de las matrículas-->
+                        <p:selectOneMenu id="cmbEstudiantes" binding="#{matriculaVista.cmbEstudiantes}">
+                            <f:selectItem itemValue="0" itemLabel="Estudiante:"/>
+                            <f:selectItems value="#{matriculaVista.itemsEstudiantes}"/>
+                        </p:selectOneMenu>
+                        
                         <!--CRUD matrícula-->
                         <p:panelGrid columns="4">
                             <h:outputText value="D. Estudiante"/>
