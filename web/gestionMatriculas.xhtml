@@ -42,7 +42,51 @@
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                        
+                        <!--CRUD matrícula-->
+                        <p:panelGrid columns="4">
+                            <h:outputText value="D. Estudiante"/>
+                            <p:inputText id="txtDocumentoEstudiante" binding="#{matriculaVista.txtDocumentoEstudiante}"/>
+
+                            <h:outputText value="N. Materia"/>
+                            <p:inputText id="txtNumeroMateria" binding="#{matriculaVista.txtNumeroMateria}"/>
+                   
+                            <h:outputText value="Nota"/>
+                            <p:inputText id="txtNota" binding="#{matriculaVista.txtNota}"/>
+
+                            <h:outputText value="Estado"/>
+                            <p:inputText id="txtEstado" binding="#{matriculaVista.txtEstado}"/>
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="4">
+                            <p:commandButton value="Registrar" binding="#{matriculaVista.btnRegistrar}" action="#{matriculaVista.action_registrar()}" update=":form"/> 
+                            <p:commandButton value="Modificar" binding="#{matriculaVista.btnModificar}" action="#{matriculaVista.action_modificar()}" update=":form"/>
+                            <p:commandButton value="Eliminar" binding="#{matriculaVista.btnEliminar}" action="#{matriculaVista.action_eliminar()}" update=":form"/>
+                            <p:commandButton value="Limpiar" binding="#{matriculaVista.btnLimpiar}" action="#{matriculaVista.limpiar()}" update=":form"/>                            
+                        </p:panelGrid>
+                        
+                        <p:dataTable id="eventsDT" var="matricula" value="#{matriculaVista.listaMatriculas}" selectionMode="single" selection="#{matriculaVista.selectedMatricula}" rowKey="#{matricula.estudiante.documentoestudiante}">
+                            <f:facet name="header">
+                                Matrículas
+                            </f:facet>
+                            <p:ajax event="rowSelect" listener="#{matriculaVista.onRowSelect}" update=":form" />
+                            <p:column headerText="D. Estudiante">
+                                <h:outputText value="#{matricula.estudiante.documentoestudiante}" />
+                            </p:column>
+                            <p:column headerText="N. Materia">
+                                <h:outputText value="#{matricula.materia.numeromateria}" />
+                            </p:column>
+                            <p:column headerText="Nota">
+                                <h:outputText value="#{matricula.nota}" />
+                            </p:column>
+                            <p:column headerText="Estado">
+                                <h:outputText value="#{matricula.estado}" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
                 </p:layoutUnit>
 
             </p:layout>
