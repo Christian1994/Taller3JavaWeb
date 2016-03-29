@@ -39,8 +39,8 @@ public class EstudianteLogica implements EstudianteLogicaLocal {
             if(estudiante.getCorreoestudiante().equals("") || estudiante.getCorreoestudiante() == null){
                 throw new Exception("Campo E-mail Estudiante Obligatorio.");
             }
-            if(!estudiante.getCorreoestudiante().contains("@") || !estudiante.getCorreoestudiante().endsWith(".com") 
-                    || !estudiante.getCorreoestudiante().endsWith(".es")){
+            if(!estudiante.getCorreoestudiante().contains("@") && 
+                    (!estudiante.getCorreoestudiante().endsWith(".com") || !estudiante.getCorreoestudiante().endsWith(".es"))){
                 throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
             }
             if(estudiante.getSemestreestudiante() == 0 || estudiante.getSemestreestudiante() == null){
@@ -51,7 +51,7 @@ public class EstudianteLogica implements EstudianteLogicaLocal {
             }
         }
         
-        Estudiante objEstudiante = estudianteDAO.find(estudiante);
+        Estudiante objEstudiante = estudianteDAO.find(estudiante.getDocumentoestudiante());
         if(objEstudiante != null){
             throw new Exception("Estudiante ya existe.");
         }
@@ -78,8 +78,8 @@ public class EstudianteLogica implements EstudianteLogicaLocal {
             if(estudiante.getCorreoestudiante().equals("") || estudiante.getCorreoestudiante() == null){
                 throw new Exception("Campo E-mail Estudiante Obligatorio.");
             }
-            if(!estudiante.getCorreoestudiante().contains("@") || !estudiante.getCorreoestudiante().endsWith(".com") 
-                    || !estudiante.getCorreoestudiante().endsWith(".es")){
+            if(!estudiante.getCorreoestudiante().contains("@") && 
+                    (!estudiante.getCorreoestudiante().endsWith(".com") || !estudiante.getCorreoestudiante().endsWith(".es"))){
                 throw new Exception("E-mail inválído. Ejemplos válidos: \"example@something.com\" o \"example@something.es\"");
             }
             if(estudiante.getSemestreestudiante() == 0 || estudiante.getSemestreestudiante() == null){
@@ -120,7 +120,7 @@ public class EstudianteLogica implements EstudianteLogicaLocal {
             throw new Exception("El Estudiante a eliminar no existe.");
         }
         else{
-            if(estudiante.getMatriculaList().size() > 0){
+            if(objEstudiante.getMatriculaList().size() > 0){
                 throw new Exception("El Estudiante tiene matrículas asociadas.");
             }
             estudianteDAO.remove(estudiante);
