@@ -27,13 +27,13 @@ public class MatriculaLogica implements MatriculaLogicaLocal {
             throw new Exception("Campos vacíos.");
         }
         else{
-            if(matricula.getEstudiante().getNombreestudiante().equals("") || matricula.getEstudiante().getNombreestudiante() == null){
+            if(matricula.getEstudiante() == null){
                 throw new Exception("No se ha seleccionado ningún Estudiante.");
             }
-            if(matricula.getMateria().getNombremateria().equals("") || matricula.getMateria().getNombremateria() == null){
+            if(matricula.getMateria() == null){
                 throw new Exception("No se ha seleccionado ninguna Materia.");
             }
-            if(matricula.getNota() == 0.0 || matricula.getNota() == null){
+            if(matricula.getNota() == null){
                 throw new Exception("Campo Nota Obligatorio.");
             }
             if(matricula.getEstado().equals("") || matricula.getEstado() == null){
