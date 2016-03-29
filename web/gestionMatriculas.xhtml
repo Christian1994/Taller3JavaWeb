@@ -68,7 +68,7 @@
                             <p:commandButton value="Limpiar" binding="#{matriculaVista.btnLimpiar}" action="#{matriculaVista.limpiar()}" update=":form"/>                            
                         </p:panelGrid>
                         
-                        <p:dataTable id="eventsDT" var="matricula" value="#{matriculaVista.listaMatriculas}" selectionMode="single" selection="#{matriculaVista.selectedMatricula}" rowKey="#{matricula.estudiante.documentoestudiante}">
+                        <p:dataTable id="eventsDT" var="matricula" value="#{matriculaVista.listaMatriculas}" selectionMode="single" selection="#{matriculaVista.selectedMatricula}" rowKey="#{matricula.matriculaPK}">
                             <f:facet name="header">
                                 Matrículas
                             </f:facet>

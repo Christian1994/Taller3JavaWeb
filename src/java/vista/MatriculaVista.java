@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import logica.MatriculaLogicaLocal;
@@ -26,7 +26,7 @@ import org.primefaces.event.SelectEvent;
  * @author jsnar
  */
 @Named(value = "matriculaVista")
-@Dependent
+@RequestScoped
 public class MatriculaVista {
 
     private InputText txtDocumentoEstudiante;
