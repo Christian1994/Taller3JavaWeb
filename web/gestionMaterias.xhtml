@@ -63,10 +63,10 @@
                                 <f:selectItems value="#{carreraVista.itemsCarreras}"/>
                             </p:selectOneMenu>
                             
-                            <p:commandButton value="Registrar" binding="#{carreraVista.btnRegistrar}" action="#{carreraVista.action_registrar()}" update=":form"/> 
-                            <p:commandButton value="Modificar" binding="#{carreraVista.btnModificar}" action="#{carreraVista.action_modificar()}" update=":form"/>
-                            <p:commandButton value="Eliminar" binding="#{carreraVista.btnEliminar}" action="#{carreraVista.action_eliminar()}" update=":form"/>
-                            <p:commandButton value="Limpiar" binding="#{carreraVista.btnLimpiar}" action="#{carreraVista.limpiar()}" update=":form"/>                            
+                            <p:commandButton value="Registrar" binding="#{materiaVista.btnRegistrar}" action="#{materiaVista.action_registrar()}" update=":form"/> 
+                            <p:commandButton value="Modificar" binding="#{materiaVista.btnModificar}" action="#{materiaVista.action_modificar()}" update=":form"/>
+                            <p:commandButton value="Eliminar" binding="#{materiaVista.btnEliminar}" action="#{materiaVista.action_eliminar()}" update=":form"/>
+                            <p:commandButton value="Limpiar" binding="#{materiaVista.btnLimpiar}" action="#{materiaVista.limpiar()}" update=":form"/>                            
                         </p:panelGrid>
                         
                         <p:dataTable id="eventsDT" var="materia" value="#{materiaVista.listaMaterias}" selectionMode="single" selection="#{materiaVista.selectedMateria}" rowKey="#{materia.numeromateria}">

@@ -76,7 +76,7 @@ public class MateriaVista {
 
     public void setItemsCarreras(ArrayList<SelectItem> itemsCarreras) {
         this.itemsCarreras = itemsCarreras;
-    }
+    }  
     
     public InputText getTxtNumero() {
         return txtNumero;
@@ -158,7 +158,7 @@ public class MateriaVista {
     }    
 
     // Mostrar por interfaz la carrera seleccionada
-    public void onRowSelect(SelectEvent event) {
+    public void onRowSelect(SelectEvent event) {        
         this.selectedMateria = (Materia) event.getObject();
         this.txtNumero.setValue(selectedMateria.getNumeromateria());
         this.txtNombre.setValue(selectedMateria.getNombremateria());
