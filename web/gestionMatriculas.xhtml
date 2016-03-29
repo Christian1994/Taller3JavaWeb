@@ -46,25 +46,19 @@
                         <p:growl id="msgs" showDetail="true" />
                         <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                         
-                        <!--Lista de estudiantes-->
-                        <p:selectOneMenu id="cmbEstudiantes" binding="#{matriculaVista.cmbEstudiantes}">
-                            <f:selectItem itemValue="0" itemLabel="Estudiante:"/>
-                            <f:selectItems value="#{matriculaVista.itemsEstudiantes}"/>
-                        </p:selectOneMenu>
-                        
-                        <!--Lista de materias-->
-                        <p:selectOneMenu id="cmbMaterias" binding="#{matriculaVista.cmbMaterias}">
-                            <f:selectItem itemValue="0" itemLabel="Materia:"/>
-                            <f:selectItems value="#{matriculaVista.itemsMaterias}"/>
-                        </p:selectOneMenu>
-                        
                         <!--CRUD matrícula-->
                         <p:panelGrid columns="4">
-                            <h:outputText value="D. Estudiante"/>
-                            <p:inputText id="txtDocumentoEstudiante" binding="#{matriculaVista.txtDocumentoEstudiante}"/>
+                            <h:outputText value="Estudiante"/>
+                            <p:selectOneMenu id="cmbEstudiantes" binding="#{matriculaVista.cmbEstudiantes}">
+                                <f:selectItem itemValue="" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{matriculaVista.itemsEstudiantes}"/>
+                            </p:selectOneMenu>
 
-                            <h:outputText value="N. Materia"/>
-                            <p:inputText id="txtNumeroMateria" binding="#{matriculaVista.txtNumeroMateria}"/>
+                            <h:outputText value="Materia"/>
+                            <p:selectOneMenu id="cmbMaterias" binding="#{matriculaVista.cmbMaterias}">
+                                <f:selectItem itemValue="" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{matriculaVista.itemsMaterias}"/>
+                            </p:selectOneMenu>
                    
                             <h:outputText value="Nota"/>
                             <p:inputText id="txtNota" binding="#{matriculaVista.txtNota}"/>
