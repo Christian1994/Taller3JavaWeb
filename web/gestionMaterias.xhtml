@@ -58,9 +58,9 @@
                             <p:inputText id="txtCreditos" binding="#{materiaVista.txtCreditos}"/>
                             
                             <h:outputText value="Carrera" />
-                            <p:selectOneMenu id="cmbCarreras" binding="#{materiaVista.cmbCarreras}">
+                            <p:selectOneMenu binding="#{materiaVista.cmbCarreras}" value="#{materiaVista.selectedCarrera}">
                                 <f:selectItem itemValue="0" itemLabel="Seleccione"/>
-                                <f:selectItems value="#{materiaVista.itemsCarreras}"/>
+                                <f:selectItems value="#{materiaVista.listaCarreras}"/>
                             </p:selectOneMenu>
                             
                             <p:commandButton value="Registrar" binding="#{materiaVista.btnRegistrar}" action="#{materiaVista.action_registrar()}" update=":form"/> 

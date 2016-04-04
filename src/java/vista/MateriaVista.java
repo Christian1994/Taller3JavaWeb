@@ -14,7 +14,6 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import logica.CarreraLogicaLocal;
 import logica.MateriaLogicaLocal;
 import modelo.Carrera;
@@ -37,7 +36,8 @@ public class MateriaVista {
     private InputText txtCreditos;
     
     private SelectOneMenu cmbCarreras;
-    private ArrayList<SelectItem> itemsCarreras;
+    private Carrera selectedCarrera;
+    private List<Carrera> listaCarreras;
     
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
@@ -60,24 +60,29 @@ public class MateriaVista {
     public void setCmbCarreras(SelectOneMenu cmbCarreras) {
         this.cmbCarreras = cmbCarreras;
     }
-
-    public ArrayList<SelectItem> getItemsCarreras() {
-        try {
-            List<Carrera> listaC = carreraLogica.consultarTodas();
-            itemsCarreras = new ArrayList<>();
-            
-            for(Carrera c: listaC){
-                itemsCarreras.add(new SelectItem(c.getNumerocarrera(), c.getNombrecarrera()));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(CarreraVista.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return itemsCarreras;
+    
+    public Carrera getSelectedCarrera() {
+        return selectedCarrera;
     }
 
-    public void setItemsCarreras(ArrayList<SelectItem> itemsCarreras) {
-        this.itemsCarreras = itemsCarreras;
+    public void setSelectedCarrera(Carrera selectedCarrera) {
+        this.selectedCarrera = selectedCarrera;
+    }
+
+    public List<Carrera> getListaCarreras() {
+        if(listaCarreras == null){
+            try {
+                listaCarreras = carreraLogica.consultarTodas();
+            } catch (Exception ex) {
+                Logger.getLogger(CarreraVista.class.getName()).log(Level.SEVERE, null, ex);
+            }            
+        }
+        
+        return listaCarreras;
+    }
+
+    public void setListaCarreras(ArrayList<Carrera> listaCarreras) {
+        this.listaCarreras = listaCarreras;
     }  
     
     public InputText getTxtNumero() {
@@ -162,11 +167,11 @@ public class MateriaVista {
     // Mostrar por interfaz la carrera seleccionada
     public void onRowSelect(SelectEvent event) {        
         this.selectedMateria = (Materia) event.getObject();
+                
         this.txtNumero.setValue(selectedMateria.getNumeromateria());
         this.txtNombre.setValue(selectedMateria.getNombremateria());
         this.txtCreditos.setValue(selectedMateria.getCreditosmateria());
-        // this.cmbCarreras.setValue(itemsCarreras.get(selectedMateria.getNumeromateria()).getValue());
-        // Pendiente cómo seleccionar la carrera
+        this.cmbCarreras.setValue(selectedMateria.getNumerocarrera().getNombrecarrera());
         
         // Se deshabilita el botón registrar para permitir que la carrera se puede modificar o eliminar       
         this.btnRegistrar.setDisabled(true);
@@ -191,7 +196,7 @@ public class MateriaVista {
         try {
             Materia objMateria = new Materia();
             Carrera objCarrera = new Carrera();
-            objCarrera.setNombrecarrera(this.cmbCarreras.getValue().toString());
+            //objCarrera.setNombrecarrera(this.cmbCarreras.getValue().toString());
             
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
