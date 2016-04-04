@@ -99,7 +99,7 @@ public class Carrera implements Serializable {
 
     @Override
     public String toString() {
-        return nombrecarrera;
+        return "modelo.Carrera[ numerocarrera=" + numerocarrera + " ]";
     }
     
 }
