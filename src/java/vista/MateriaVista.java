@@ -49,6 +49,8 @@ public class MateriaVista {
     
     @EJB
     private MateriaLogicaLocal materiaLogica;
+    
+    @EJB
     private CarreraLogicaLocal carreraLogica;
 
     public SelectOneMenu getCmbCarreras() {
