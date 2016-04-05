@@ -162,6 +162,7 @@ public class MateriaVista {
     // Mostrar por interfaz la materia seleccionada
     public void onRowSelect(SelectEvent event) {        
         this.selectedMateria = (Materia) event.getObject();
+        
         this.txtNumero.setValue(selectedMateria.getNumeromateria());
         this.txtNombre.setValue(selectedMateria.getNombremateria());
         this.txtCreditos.setValue(selectedMateria.getCreditosmateria());
@@ -190,10 +191,10 @@ public class MateriaVista {
     // Método registrar
     public void action_registrar(){
         try {
-            Materia objMateria = new Materia();
             Carrera objCarrera = new Carrera();
             objCarrera.setNumerocarrera(Integer.parseInt(this.cmbCarreras.getValue().toString()));
             
+            Materia objMateria = new Materia();
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
             objMateria.setCreditosmateria(Integer.parseInt(this.txtCreditos.getValue().toString()));
@@ -212,10 +213,10 @@ public class MateriaVista {
     // Método modificar
     public void action_modificar(){
         try {
-            Materia objMateria = new Materia();
             Carrera objCarrera = new Carrera();
             objCarrera.setNumerocarrera(Integer.parseInt(this.cmbCarreras.getValue().toString()));
             
+            Materia objMateria = new Materia();
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
             objMateria.setCreditosmateria(Integer.parseInt(this.txtCreditos.getValue().toString()));
@@ -234,10 +235,10 @@ public class MateriaVista {
     // Método eliminar
     public void action_eliminar(){
         try {
-            Materia objMateria = new Materia();
             Carrera objCarrera = new Carrera();
             objCarrera.setNumerocarrera(Integer.parseInt(this.cmbCarreras.getValue().toString()));
             
+            Materia objMateria = new Materia();
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
             objMateria.setCreditosmateria(Integer.parseInt(this.txtCreditos.getValue().toString()));

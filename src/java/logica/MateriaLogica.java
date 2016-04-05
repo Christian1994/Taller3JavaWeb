@@ -69,7 +69,7 @@ public class MateriaLogica implements MateriaLogicaLocal {
             }
         }
         
-        Materia objMateria = materiaDAO.find(materia.getNombremateria());
+        Materia objMateria = materiaDAO.find(materia.getNumeromateria());
         if(objMateria == null){
             throw new Exception("La materia a Modificar No Existe.");
         }else{
