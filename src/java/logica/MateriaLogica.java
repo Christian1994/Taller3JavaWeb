@@ -107,7 +107,7 @@ public class MateriaLogica implements MateriaLogicaLocal {
     }
 
     @Override
-    public Materia consultarxcodigo(Integer codigo) throws Exception {
+    public Materia consultarxCodigo(Integer codigo) throws Exception {
         if(codigo==null || codigo==0){
             throw new Exception("El código es Obligatorio.");
         }else{

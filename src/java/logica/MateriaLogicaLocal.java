@@ -18,6 +18,6 @@ public interface MateriaLogicaLocal {
     public void registrarMateria(Materia materia) throws Exception;
     public void modificarMateria(Materia materia) throws Exception;
     public void eliminarMateria(Materia materia) throws Exception;
-    public Materia consultarxcodigo(Integer codigo) throws Exception;
+    public Materia consultarxCodigo(Integer codigo) throws Exception;
     public List<Materia> consultarTodas() throws Exception;
 }
