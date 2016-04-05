@@ -193,7 +193,7 @@ public class MateriaVista {
         try {
             Materia objMateria = new Materia();
             Carrera objCarrera = new Carrera();
-            objCarrera.setNombrecarrera(this.cmbCarreras.getValue().toString());
+            objCarrera.setNumerocarrera(Integer.parseInt(this.cmbCarreras.getValue().toString()));
             
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
@@ -214,9 +214,13 @@ public class MateriaVista {
     public void action_modificar(){
         try {
             Materia objMateria = new Materia();
+            Carrera objCarrera = new Carrera();
+            objCarrera.setNumerocarrera(Integer.parseInt(this.cmbCarreras.getValue().toString()));
+            
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
             objMateria.setCreditosmateria(Integer.parseInt(this.txtCreditos.getValue().toString()));
+            objMateria.setNumerocarrera(objCarrera);
             
             materiaLogica.modificarMateria(objMateria);
             listaMaterias = null;
@@ -232,9 +236,13 @@ public class MateriaVista {
     public void action_eliminar(){
         try {
             Materia objMateria = new Materia();
+            Carrera objCarrera = new Carrera();
+            objCarrera.setNumerocarrera(Integer.parseInt(this.cmbCarreras.getValue().toString()));
+            
             objMateria.setNumeromateria(Integer.parseInt(this.txtNumero.getValue().toString()));
             objMateria.setNombremateria(this.txtNombre.getValue().toString());
             objMateria.setCreditosmateria(Integer.parseInt(this.txtCreditos.getValue().toString()));
+            objMateria.setNumerocarrera(objCarrera);
             
             materiaLogica.eliminarMateria(objMateria);
             listaMaterias = null;
