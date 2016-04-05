@@ -42,7 +42,8 @@ public class MatriculaVista {
     private ArrayList<SelectItem> itemsMaterias;
     
     private InputText txtNota;
-    private InputText txtEstado;
+    
+    private SelectOneMenu cmbEstados;
     
     private CommandButton btnRegistrar;
     private CommandButton btnModificar;
@@ -123,12 +124,12 @@ public class MatriculaVista {
         this.txtNota = txtNota;
     }
 
-    public InputText getTxtEstado() {
-        return txtEstado;
+    public SelectOneMenu getCmbEstados() {
+        return cmbEstados;
     }
 
-    public void setTxtEstado(InputText txtEstado) {
-        this.txtEstado = txtEstado;
+    public void setCmbEstados(SelectOneMenu cmbEstados) {
+        this.cmbEstados = cmbEstados;
     }
 
     public List<Matricula> getListaMatriculas() {
@@ -191,10 +192,10 @@ public class MatriculaVista {
     public void onRowSelect(SelectEvent event) {
         this.selectedMatricula = (Matricula) event.getObject();
         
-        this.cmbEstudiantes.setValue(selectedMatricula.getEstudiante().getNombreestudiante());
-        this.cmbMaterias.setValue(selectedMatricula.getMateria().getNombremateria());
+        this.cmbEstudiantes.setValue(selectedMatricula.getEstudiante().getDocumentoestudiante());
+        this.cmbMaterias.setValue(selectedMatricula.getMateria().getNumeromateria());
         this.txtNota.setValue(selectedMatricula.getNota());
-        this.txtEstado.setValue(selectedMatricula.getEstado());
+        this.cmbEstados.setValue(selectedMatricula.getEstado());
         
         // Se deshabilita el botón registrar para permitir que la matricula se puede modificar o eliminar       
         this.btnRegistrar.setDisabled(true);
@@ -207,7 +208,7 @@ public class MatriculaVista {
         this.cmbEstudiantes.setValue("");
         this.cmbMaterias.setValue("");
         this.txtNota.setValue("");
-        this.txtEstado.setValue("");
+        this.cmbEstados.setValue("");
         
         this.btnRegistrar.setDisabled(false);
         this.btnModificar.setDisabled(true);
@@ -228,7 +229,7 @@ public class MatriculaVista {
             objMatricula.setEstudiante(objEstudiante);
             objMatricula.setMateria(objMateria);
             objMatricula.setNota(Double.parseDouble(this.txtNota.getValue().toString()));
-            objMatricula.setEstado(this.txtEstado.getValue().toString());
+            objMatricula.setEstado(this.cmbEstados.getValue().toString());
             
             matriculaLogica.registrarMatricula(objMatricula);
             listaMatriculas = null;
@@ -253,7 +254,7 @@ public class MatriculaVista {
             objMatricula.setEstudiante(objEstudiante);
             objMatricula.setMateria(objMateria);
             objMatricula.setNota(Double.parseDouble(this.txtNota.getValue().toString()));
-            objMatricula.setEstado(this.txtEstado.getValue().toString());
+            objMatricula.setEstado(this.cmbEstados.getValue().toString());
             
             matriculaLogica.modificarMatricula(objMatricula);
             listaMatriculas = null;
@@ -278,7 +279,7 @@ public class MatriculaVista {
             objMatricula.setEstudiante(objEstudiante);
             objMatricula.setMateria(objMateria);
             objMatricula.setNota(Double.parseDouble(this.txtNota.getValue().toString()));
-            objMatricula.setEstado(this.txtEstado.getValue().toString());
+            objMatricula.setEstado(this.cmbEstados.getValue().toString());
             
             matriculaLogica.eliminarMatricula(objMatricula);
             listaMatriculas = null;

@@ -64,7 +64,11 @@
                             <p:inputText id="txtNota" binding="#{matriculaVista.txtNota}"/>
 
                             <h:outputText value="Estado"/>
-                            <p:inputText id="txtEstado" binding="#{matriculaVista.txtEstado}"/>
+                            <p:selectOneMenu id="cmbEstados" binding="#{matriculaVista.cmbEstados}">
+                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                <f:selectItem itemValue="APROBADO" itemLabel="APROBADO"/>
+                                <f:selectItem itemValue="DESAPROBADO" itemLabel="DESAPROBADO"/>
+                            </p:selectOneMenu>
                         </p:panelGrid>
                         
                         <p:panelGrid columns="4">

@@ -165,7 +165,7 @@ public class MateriaVista {
         this.txtNumero.setValue(selectedMateria.getNumeromateria());
         this.txtNombre.setValue(selectedMateria.getNombremateria());
         this.txtCreditos.setValue(selectedMateria.getCreditosmateria());
-        this.cmbCarreras.setValue(selectedMateria.getNumerocarrera().getNumerocarrera().toString());
+        this.cmbCarreras.setValue(selectedMateria.getNumerocarrera().getNumerocarrera());
         
         // Se deshabilita el botón registrar para permitir que la materia se puede modificar o eliminar       
         this.btnRegistrar.setDisabled(true);
