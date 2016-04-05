@@ -159,16 +159,15 @@ public class MateriaVista {
         this.selectedMateria = selectedMateria;
     }    
 
-    // Mostrar por interfaz la carrera seleccionada
+    // Mostrar por interfaz la materia seleccionada
     public void onRowSelect(SelectEvent event) {        
         this.selectedMateria = (Materia) event.getObject();
         this.txtNumero.setValue(selectedMateria.getNumeromateria());
         this.txtNombre.setValue(selectedMateria.getNombremateria());
         this.txtCreditos.setValue(selectedMateria.getCreditosmateria());
         this.cmbCarreras.setValue(selectedMateria.getNumerocarrera().getNumerocarrera().toString());
-        // Pendiente cómo seleccionar la carrera
         
-        // Se deshabilita el botón registrar para permitir que la carrera se puede modificar o eliminar       
+        // Se deshabilita el botón registrar para permitir que la materia se puede modificar o eliminar       
         this.btnRegistrar.setDisabled(true);
         this.btnModificar.setDisabled(false);
         this.btnEliminar.setDisabled(false);

@@ -35,12 +35,12 @@ import org.primefaces.event.SelectEvent;
 @RequestScoped
 public class MatriculaVista {
 
-    private InputText txtDocumentoEstudiante;
     private SelectOneMenu cmbEstudiantes;
     private ArrayList<SelectItem> itemsEstudiantes;
+    
     private SelectOneMenu cmbMaterias;
     private ArrayList<SelectItem> itemsMaterias;
-    private InputText txtNumeroMateria;
+    
     private InputText txtNota;
     private InputText txtEstado;
     
@@ -54,18 +54,12 @@ public class MatriculaVista {
     
     @EJB
     private MatriculaLogicaLocal matriculaLogica;
+    
     @EJB
     private EstudianteLogicaLocal estudianteLogica;
+    
     @EJB
     private MateriaLogicaLocal materiaLogica;
-
-    public InputText getTxtDocumentoEstudiante() {
-        return txtDocumentoEstudiante;
-    }
-
-    public void setTxtDocumentoEstudiante(InputText txtDocumentoEstudiante) {
-        this.txtDocumentoEstudiante = txtDocumentoEstudiante;
-    }
 
     public SelectOneMenu getCmbEstudiantes() {
         return cmbEstudiantes;
@@ -92,14 +86,6 @@ public class MatriculaVista {
 
     public void setItemsEstudiantes(ArrayList<SelectItem> itemsEstudiantes) {
         this.itemsEstudiantes = itemsEstudiantes;
-    }
-
-    public InputText getTxtNumeroMateria() {
-        return txtNumeroMateria;
-    }
-
-    public void setTxtNumeroMateria(InputText txtNumeroMateria) {
-        this.txtNumeroMateria = txtNumeroMateria;
     }
 
     public SelectOneMenu getCmbMaterias() {
@@ -205,8 +191,8 @@ public class MatriculaVista {
     public void onRowSelect(SelectEvent event) {
         this.selectedMatricula = (Matricula) event.getObject();
         
-        this.txtDocumentoEstudiante.setValue(selectedMatricula.getEstudiante().getDocumentoestudiante());
-        this.txtNumeroMateria.setValue(selectedMatricula.getMateria().getNumeromateria());
+        this.cmbEstudiantes.setValue(selectedMatricula.getEstudiante().getNombreestudiante());
+        this.cmbMaterias.setValue(selectedMatricula.getMateria().getNombremateria());
         this.txtNota.setValue(selectedMatricula.getNota());
         this.txtEstado.setValue(selectedMatricula.getEstado());
         
@@ -214,19 +200,15 @@ public class MatriculaVista {
         this.btnRegistrar.setDisabled(true);
         this.btnModificar.setDisabled(false);
         this.btnEliminar.setDisabled(false);
-        this.txtDocumentoEstudiante.setDisabled(true);
-        this.txtNumeroMateria.setDisabled(true);
     }
     
     //Limpia los campos y reinicia los valores
     public void limpiar(){
-        this.txtDocumentoEstudiante.setValue("");
-        this.txtNumeroMateria.setValue("");
+        this.cmbEstudiantes.setValue("");
+        this.cmbMaterias.setValue("");
         this.txtNota.setValue("");
         this.txtEstado.setValue("");
         
-        this.txtDocumentoEstudiante.setDisabled(false);
-        this.txtNumeroMateria.setDisabled(false);
         this.btnRegistrar.setDisabled(false);
         this.btnModificar.setDisabled(true);
         this.btnEliminar.setDisabled(true);
@@ -236,9 +218,9 @@ public class MatriculaVista {
     public void action_registrar(){
         try {
             Estudiante objEstudiante = new Estudiante();
-            objEstudiante.setDocumentoestudiante(Long.parseLong(this.txtDocumentoEstudiante.getValue().toString()));
+            objEstudiante.setDocumentoestudiante(Long.parseLong(this.cmbEstudiantes.getValue().toString()));
             Materia objMateria = new Materia();
-            objMateria.setNumeromateria(Integer.parseInt(this.txtNumeroMateria.getValue().toString()));
+            objMateria.setNumeromateria(Integer.parseInt(this.cmbMaterias.getValue().toString()));
             MatriculaPK objMatriculaPK = new MatriculaPK(objEstudiante.getDocumentoestudiante(), objMateria.getNumeromateria());
             
             Matricula objMatricula = new Matricula();
@@ -261,9 +243,9 @@ public class MatriculaVista {
     public void action_modificar(){
         try {
             Estudiante objEstudiante = new Estudiante();
-            objEstudiante.setDocumentoestudiante(Long.parseLong(this.txtDocumentoEstudiante.getValue().toString()));
+            objEstudiante.setDocumentoestudiante(Long.parseLong(this.cmbEstudiantes.getValue().toString()));
             Materia objMateria = new Materia();
-            objMateria.setNumeromateria(Integer.parseInt(this.txtNumeroMateria.getValue().toString()));
+            objMateria.setNumeromateria(Integer.parseInt(this.cmbMaterias.getValue().toString()));
             MatriculaPK objMatriculaPK = new MatriculaPK(objEstudiante.getDocumentoestudiante(), objMateria.getNumeromateria());
             
             Matricula objMatricula = new Matricula();
@@ -286,9 +268,9 @@ public class MatriculaVista {
     public void action_eliminar(){
         try {
             Estudiante objEstudiante = new Estudiante();
-            objEstudiante.setDocumentoestudiante(Long.parseLong(this.txtDocumentoEstudiante.getValue().toString()));
+            objEstudiante.setDocumentoestudiante(Long.parseLong(this.cmbEstudiantes.getValue().toString()));
             Materia objMateria = new Materia();
-            objMateria.setNumeromateria(Integer.parseInt(this.txtNumeroMateria.getValue().toString()));
+            objMateria.setNumeromateria(Integer.parseInt(this.cmbMaterias.getValue().toString()));
             MatriculaPK objMatriculaPK = new MatriculaPK(objEstudiante.getDocumentoestudiante(), objMateria.getNumeromateria());
             
             Matricula objMatricula = new Matricula();
