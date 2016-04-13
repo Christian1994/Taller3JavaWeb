@@ -75,7 +75,9 @@
                             <p:commandButton value="Registrar" binding="#{matriculaVista.btnRegistrar}" action="#{matriculaVista.action_registrar()}" update=":form"/> 
                             <p:commandButton value="Modificar" binding="#{matriculaVista.btnModificar}" action="#{matriculaVista.action_modificar()}" update=":form"/>
                             <p:commandButton value="Eliminar" binding="#{matriculaVista.btnEliminar}" action="#{matriculaVista.action_eliminar()}" update=":form"/>
-                            <p:commandButton value="Limpiar" binding="#{matriculaVista.btnLimpiar}" action="#{matriculaVista.limpiar()}" update=":form"/>                            
+                            <p:commandButton value="Limpiar" binding="#{matriculaVista.btnLimpiar}" action="#{matriculaVista.limpiar()}" update=":form"/>
+
+                            <p:commandButton value="Cerrar Sesión" binding="#{sesionVista.btnCerrar}" action="#{sesionVista.cerrarSesion_action()}"/> 
                         </p:panelGrid>
                         
                         <p:dataTable id="eventsDT" var="matricula" value="#{matriculaVista.listaMatriculas}" selectionMode="single" selection="#{matriculaVista.selectedMatricula}" rowKey="#{matricula.matriculaPK}">

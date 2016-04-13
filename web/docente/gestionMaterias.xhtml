@@ -18,7 +18,7 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    CRUD Carrera
+                    CRUD Materia
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
@@ -46,33 +46,50 @@
                         <p:growl id="msgs" showDetail="true" />
                         <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                         
-                        <!--CRUD carrera-->
+                        <!--CRUD materia-->
                         <p:panelGrid columns="4">
                             <h:outputText value="Número"/>
-                            <p:inputText id="txtNumero" binding="#{carreraVista.txtNumero}"/>
+                            <p:inputText id="txtNumero" binding="#{materiaVista.txtNumero}"/>
                             
                             <h:outputText value="Nombre"/>
-                            <p:inputText id="txtNombre" binding="#{carreraVista.txtNombre}"/>
- 
-                            <p:commandButton value="Registrar" binding="#{carreraVista.btnRegistrar}" action="#{carreraVista.action_registrar()}" update=":form"/> 
-                            <p:commandButton value="Modificar" binding="#{carreraVista.btnModificar}" action="#{carreraVista.action_modificar()}" update=":form"/>
-                            <p:commandButton value="Eliminar" binding="#{carreraVista.btnEliminar}" action="#{carreraVista.action_eliminar()}" update=":form"/>
-                            <p:commandButton value="Limpiar" binding="#{carreraVista.btnLimpiar}" action="#{carreraVista.limpiar()}" update=":form"/>                            
+                            <p:inputText id="txtNombre" binding="#{materiaVista.txtNombre}"/>
+
+                            <h:outputText value="Créditos"/>
+                            <p:inputText id="txtCreditos" binding="#{materiaVista.txtCreditos}"/>
+                            
+                            <h:outputText value="Carrera" />
+                            <p:selectOneMenu id="cmbCarreras" binding="#{materiaVista.cmbCarreras}">
+                                <f:selectItem itemValue="0" itemLabel="Seleccione"/>
+                                <f:selectItems value="#{materiaVista.itemsCarreras}"/>
+                            </p:selectOneMenu>
+                            
+                            <p:commandButton value="Registrar" binding="#{materiaVista.btnRegistrar}" action="#{materiaVista.action_registrar()}" update=":form"/> 
+                            <p:commandButton value="Modificar" binding="#{materiaVista.btnModificar}" action="#{materiaVista.action_modificar()}" update=":form"/>
+                            <p:commandButton value="Eliminar" binding="#{materiaVista.btnEliminar}" action="#{materiaVista.action_eliminar()}" update=":form"/>
+                            <p:commandButton value="Limpiar" binding="#{materiaVista.btnLimpiar}" action="#{materiaVista.limpiar()}" update=":form"/>  
+                            
+                            <p:commandButton value="Cerrar Sesión" binding="#{sesionVista.btnCerrar}" action="#{sesionVista.cerrarSesion_action()}"/> 
                         </p:panelGrid>
                         
-                        <p:dataTable id="eventsDT" var="carrera" value="#{carreraVista.listaCarreras}" selectionMode="single" selection="#{carreraVista.selectedCarrera}" rowKey="#{carrera.numerocarrera}">
+                        <p:dataTable id="eventsDT" var="materia" value="#{materiaVista.listaMaterias}" selectionMode="single" selection="#{materiaVista.selectedMateria}" rowKey="#{materia.numeromateria}">
                             <f:facet name="header">
-                                Carreras
+                                Materias
                             </f:facet>
-                            <p:ajax event="rowSelect" listener="#{carreraVista.onRowSelect}" update=":form" />
+                            <p:ajax event="rowSelect" listener="#{materiaVista.onRowSelect}" update=":form" />
                             <p:column headerText="Número">
-                                <h:outputText value="#{carrera.numerocarrera}" />
+                                <h:outputText value="#{materia.numeromateria}" />
                             </p:column>
                             <p:column headerText="Nombre">
-                                <h:outputText value="#{carrera.nombrecarrera}" />
+                                <h:outputText value="#{materia.nombremateria}" />
+                            </p:column>
+                            <p:column headerText="Nº Créditos">
+                                <h:outputText value="#{materia.creditosmateria}" />
+                            </p:column>
+                            <p:column headerText="Código Carrera">
+                                <h:outputText value="#{materia.numerocarrera.numerocarrera}" />
                             </p:column>
                         </p:dataTable>
-                    </h:form>
+                    </h:form>                    
                 </p:layoutUnit>
 
             </p:layout>
@@ -81,4 +98,7 @@
 
     </f:view>
 </html>
+
+
+
 

@@ -43,7 +43,8 @@
 
                 <p:layoutUnit position="center">
                     <h:form>
-                        <p:menu>
+                        <p:growl id="msgs" showDetail="true" />
+                        <!--<p:menu>
                             <p:submenu label="Univalle Demo">
                                 <p:menuitem value="Gestión Carreras" url="/faces/gestionCarreras.xhtml" />
                                 <p:menuitem value="Gestión Docentes" url="/faces/gestionDocentes.xhtml" />
@@ -51,7 +52,16 @@
                                 <p:menuitem value="Gestión Materias" url="/faces/gestionMaterias.xhtml"/>
                                 <p:menuitem value="Gestión Matrículas" url="/faces/gestionMatriculas.xhtml"/>
                             </p:submenu>
-                        </p:menu>
+                        </p:menu>-->
+                        <p:panelGrid columns="2">
+                            <h:outputText value="Documento"/>
+                            <p:inputText id="txtUsuario" binding="#{sesionVista.txtUsuario}"/>
+                            
+                            <h:outputText value="Clave"/>
+                            <p:password id="txtClave" binding="#{sesionVista.txtClave}"/>
+                            
+                            <p:commandButton value="Iniciar Sesión" binding="#{sesionVista.btnIngresar}" action="#{sesionVista.funcion_ingresar()}"/>
+                        </p:panelGrid>
                     </h:form>                    
                 </p:layoutUnit>
 
