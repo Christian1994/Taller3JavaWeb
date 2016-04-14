@@ -10,7 +10,7 @@
     </context-param>
     <filter>
         <filter-name>FiltroDocente</filter-name>
-        <filter-class>java.filtros</filter-class>
+        <filter-class>filtros</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FiltroDocente</filter-name>
@@ -18,7 +18,7 @@
     </filter-mapping>
     <filter>
         <filter-name>FiltroEstudiante</filter-name>
-        <filter-class>java.filtros</filter-class>
+        <filter-class>filtros</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FiltroEstudiante</filter-name>
