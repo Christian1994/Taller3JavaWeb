@@ -8,6 +8,22 @@
     <param-name>primefaces.THEME</param-name>  
         <param-value>casablanca</param-value>  
     </context-param>
+    <filter>
+        <filter-name>FiltroDocente</filter-name>
+        <filter-class>java.filtros</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FiltroDocente</filter-name>
+        <url-pattern>/docente/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>FiltroEstudiante</filter-name>
+        <filter-class>java.filtros</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FiltroEstudiante</filter-name>
+        <url-pattern>/estudiante/*</url-pattern>
+    </filter-mapping>        
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
