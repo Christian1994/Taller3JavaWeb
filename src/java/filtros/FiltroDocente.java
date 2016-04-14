@@ -39,19 +39,19 @@ public class FiltroDocente implements Filter{
         {
             if(!tipo.equals("docente"))
             {
-               ((HttpServletResponse)response).sendRedirect("/faces/SesionInvalida.xhtml");
+               ((HttpServletResponse)response).sendRedirect("/Taller3JavaWeb/faces/SesionInvalida.xhtml");
             }else{
                 Docente docente =(Docente)((HttpServletRequest)request).getSession().getAttribute("usuario");
                 if(docente!=null){                    
                     chain.doFilter(request, response);
                 }else{
-                    ((HttpServletResponse)response).sendRedirect("/faces/SesionInvalida.xhtml");
+                    ((HttpServletResponse)response).sendRedirect("/Taller3JavaWeb/faces/SesionInvalida.xhtml");
                 }
             
             }
         }
         }catch(NullPointerException e){
-            ((HttpServletResponse)response).sendRedirect("/faces/SesionInvalida.xhtml");
+            ((HttpServletResponse)response).sendRedirect("/Taller3JavaWeb/faces/SesionInvalida.xhtml");
         }
     }
 

@@ -4,26 +4,26 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
-    <context-param>  
-    <param-name>primefaces.THEME</param-name>  
-        <param-value>casablanca</param-value>  
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>casablanca</param-value>
     </context-param>
     <filter>
         <filter-name>FiltroDocente</filter-name>
-        <filter-class>filtros</filter-class>
+        <filter-class>filtros.FiltroDocente</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FiltroDocente</filter-name>
-        <url-pattern>/docente/*</url-pattern>
+        <url-pattern>/faces/docente/*</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>FiltroEstudiante</filter-name>
-        <filter-class>filtros</filter-class>
+        <filter-class>filtros.FiltroEstudiante</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FiltroEstudiante</filter-name>
-        <url-pattern>/estudiante/*</url-pattern>
-    </filter-mapping>        
+        <url-pattern>/faces/estudiante/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

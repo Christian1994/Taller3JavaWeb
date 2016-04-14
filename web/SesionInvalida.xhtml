@@ -13,7 +13,7 @@ and open the template in the editor.
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>SACPE 2015</title>
+                <title>Acceso Denegado!</title>
                 <link rel="shortcut icon" href="favicon.ico"/>
             </f:facet>
 
@@ -28,7 +28,7 @@ and open the template in the editor.
                     if (!document.images)
                         return;
                     if (parselimit===1)
-                        window.location="/faces/index.xhtml";
+                        window.location="/Taller3JavaWeb/faces/index.xhtml";
                     else{ 
                         parselimit-=1;
                         curmin=Math.floor(parselimit/60);
@@ -51,7 +51,7 @@ and open the template in the editor.
             
             <p:panel id="panel" header="Sesión Inválida">
                 <div align="center">
-                    <h:outputText value="No Ha Iniciado Sesión o Esta Ya Ha Caducado"/>
+                    <h:outputText value="No Ha Iniciado Sesión, Esta Ya Ha Caducado o Acceso a CRUD denegado."/>
                     <br/>
                     <h:graphicImage url="/images/advertencia.jpg" alt="Atención"  />
                     <br/>
